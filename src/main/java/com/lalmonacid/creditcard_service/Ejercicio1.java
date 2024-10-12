@@ -29,7 +29,7 @@ public class Ejercicio1 {
         Boolean areCardsEqual = creditCard.equals(creditCard2);
         System.out.println("Are cards equal? " + areCardsEqual);
 
-        double rate = Operation.getRate(brand, amount);
+        double rate = Operation.getRateFromBrandAndAmount(brand, amount);
         System.out.println("Rate: " + rate);
     }
 }

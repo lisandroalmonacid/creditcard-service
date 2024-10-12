@@ -12,15 +12,15 @@ public class Operation {
         this.amount = amount;
     }
 
-    public static Double getRate(CreditCardBrand brand, Double amount) throws Exception {
-        assertValidAmount(amount);
-        return brand.getRateFromAmount(amount);
-    }
-
     public static Operation of(CreditCard creditCard, Double amount) throws Exception {
         assertValidCard(creditCard);
         assertValidAmount(amount);
         return new Operation(creditCard, amount);
+    }
+
+    public static Double getRateFromBrandAndAmount(CreditCardBrand brand, Double amount) throws Exception {
+        assertValidAmount(amount);
+        return brand.getRateFromAmount(amount);
     }
 
     public Double getRate() {
@@ -39,12 +39,12 @@ public class Operation {
         }
     }
 
-    public static Boolean isValidAmount(Double amount) {
-        return amount < 1000;
-    }
-
     public static Boolean isValidCreditCard(CreditCard creditCard) {
         return !creditCard.isExpired();
+    }
+
+    public static Boolean isValidAmount(Double amount) {
+        return amount < 1000;
     }
 
     public boolean isValid() {

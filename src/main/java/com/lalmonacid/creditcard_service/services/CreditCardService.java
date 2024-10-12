@@ -19,10 +19,10 @@ public class CreditCardService {
 
     public Double getOperationRateWithBrandAndAmount(String brandName, Double amount) throws Exception {
         CreditCardBrand brand = CreditCardBrand.from(brandName);
-        return Operation.getRate(brand, amount);
+        return Operation.getRateFromBrandAndAmount(brand, amount);
     }
 
-    public Double getOperationRateWithCardIDAndAmount(String creditCardNumber, Double amount) throws Exception {
+    public Double getOperationRateWithCardNumberAndAmount(String creditCardNumber, Double amount) throws Exception {
         CreditCardNumber number = CreditCardNumber.from(creditCardNumber);
         CreditCard card = creditCardRepository.getByNumber(number);
         return Operation.of(card, amount).getRate();

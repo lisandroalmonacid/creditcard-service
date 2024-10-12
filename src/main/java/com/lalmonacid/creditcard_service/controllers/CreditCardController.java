@@ -16,9 +16,9 @@ public class CreditCardController {
     private CreditCardService creditCardService;
 
     @GetMapping("/operationRate")
-    public ResponseEntity<Object> getOperationRate(@RequestParam String brand, @RequestParam Double amount) {
+    public ResponseEntity<Object> getOperationRate(@RequestParam String brandName, @RequestParam Double amount) {
         try {
-            Double rate = creditCardService.getOperationRateWithBrandAndAmount(brand, amount);
+            Double rate = creditCardService.getOperationRateWithBrandAndAmount(brandName, amount);
             return ResponseEntity.ok(rate);
         } catch (Exception e) {
             return ResponseEntity
@@ -30,7 +30,7 @@ public class CreditCardController {
     @GetMapping("/operationRateFromCard")
     public ResponseEntity<Object> getOperationRateFromCardAndAmount(@RequestParam String creditCardNumber, @RequestParam Double amount) {
         try {
-            Double rate = creditCardService.getOperationRateWithCardIDAndAmount(creditCardNumber, amount);
+            Double rate = creditCardService.getOperationRateWithCardNumberAndAmount(creditCardNumber, amount);
             return ResponseEntity.ok(rate);
         } catch (Exception e) {
             return ResponseEntity

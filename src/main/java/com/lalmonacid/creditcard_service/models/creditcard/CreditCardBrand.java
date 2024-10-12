@@ -21,13 +21,15 @@ public abstract class CreditCardBrand {
     public static CreditCardBrand fromNumber(CreditCardNumber creditCardNumber) throws Exception {
         if (AmexCreditCardBrand.isNumberForBrand(creditCardNumber)) {
             return CreditCardBrand.from(AMEX);
-        } else if (NaranjaCreditCardBrand.isNumberForBrand(creditCardNumber)) {
-            return CreditCardBrand.from(NARA);
-        } else if (VisaCreditCardBrand.isNumberForBrand(creditCardNumber)) {
-            return CreditCardBrand.from(VISA);
-        } else {
-            throw new Exception("Invalid credit card number");
         }
+        if (NaranjaCreditCardBrand.isNumberForBrand(creditCardNumber)) {
+            return CreditCardBrand.from(NARA);
+        }
+        if (VisaCreditCardBrand.isNumberForBrand(creditCardNumber)) {
+            return CreditCardBrand.from(VISA);
+        }
+
+        throw new Exception("Invalid credit card number");
     }
 
     public abstract Double getRateFromAmount(Double amount);
@@ -36,6 +38,4 @@ public abstract class CreditCardBrand {
     public boolean equals(CreditCardBrand brand) {
         return this.name().equals(brand.name());
     }
-
-    //public abstract static boolean isNumberForBrand(CreditCardNumber number);
 }

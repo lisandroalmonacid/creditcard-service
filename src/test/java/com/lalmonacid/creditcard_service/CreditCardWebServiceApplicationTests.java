@@ -73,7 +73,7 @@ class CreditCardWebServiceApplicationTests {
 	public void test05_InvalidAmountCausesError() {
 		ResponseEntity<Object> response = creditCardController.getOperationRate("VISA", 1000.0);
 		assertEquals(HttpStatus.INTERNAL_SERVER_ERROR, response.getStatusCode());
-		assertEquals("Error: Amount must be less than 1000", response.getBody());
+		assertEquals("Error: Amount must be more than zero and less than 1000", response.getBody());
 	}
 
 	// Endpoint: /api/creditcards/operationRateFromCard
@@ -145,7 +145,7 @@ class CreditCardWebServiceApplicationTests {
 		ResponseEntity<Object> response = creditCardController.getOperationRateFromCardAndAmount(invalidCreditCardNumber, 1000.0);
 
 		assertEquals(HttpStatus.INTERNAL_SERVER_ERROR, response.getStatusCode());
-		assertEquals("Error: Amount must be less than 1000", response.getBody());
+		assertEquals("Error: Amount must be more than zero and less than 1000", response.getBody());
 	}
 
 	// Tests Ejercicio 1
@@ -185,7 +185,7 @@ class CreditCardWebServiceApplicationTests {
 			CreditCard card = CreditCardFactory.ofNumber(CreditCardNumber.from(amexCreditCardNumber));
 			Operation.of(card, 1000.0);
 		} catch (Exception e) {
-			assertEquals("Amount must be less than 1000", e.getMessage());
+			assertEquals("Amount must be more than zero and less than 1000", e.getMessage());
 		}
 	}
 

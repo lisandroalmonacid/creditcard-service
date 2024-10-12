@@ -8,7 +8,7 @@ import com.lalmonacid.creditcard_service.models.creditcard.CreditCardNumber;
 
 import java.time.YearMonth;
 
-public class Ejercicio1 {
+public class QuickShowcase {
     public static void main( String[] args ) throws Exception {
         CreditCardBrand brand = CreditCardBrand.from("NARA");
         CreditCardNumber number = CreditCardNumber.from("3123456789123");

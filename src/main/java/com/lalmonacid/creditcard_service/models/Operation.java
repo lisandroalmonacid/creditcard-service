@@ -35,7 +35,7 @@ public class Operation {
 
     private static void assertValidAmount(Double amount) throws Exception {
         if (!isValidAmount(amount)) {
-            throw new Exception("Amount must be less than 1000");
+            throw new Exception("Amount must be more than zero and less than 1000");
         }
     }
 
@@ -44,7 +44,7 @@ public class Operation {
     }
 
     public static Boolean isValidAmount(Double amount) {
-        return amount < 1000;
+        return amount > 0 && amount < 1000;
     }
 
     public boolean isValid() {

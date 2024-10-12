@@ -3,7 +3,13 @@
 This is a simple credit card web service developed in Spring Boot.
 [Link to Swagger UI](http://18.191.149.160/swagger-ui/index.html)
 
-## Endpoints:
+It calculates an Operation Rate depending on the specified Credit Card Brand:
+
+- AMEX: Current month / 10.
+- NARA: Current day of the month / 2.
+- VISA: Last two digits of the current year / current month.
+
+## API endpoints:
 
 ### /api/creditcards/operationRate
 - Brand: valid brands are "VISA", "NARA" and "AMEX".
@@ -15,11 +21,5 @@ This is a simple credit card web service developed in Spring Boot.
   - Starting with 4: it's a VISA number.
   - Starting with 5: it's a NARA number.
 - Amount: must be a number between 0 and 1000.
-
-The Operation Rate is calculated differently depending on the Credit Card Brand:
-
-- AMEX: Current month / 10.
-- NARA: Current day of the month / 2.
-- VISA: Last two digits of the current year / current month.
 
 An extra executable file is included (QuickShowcase.java) to demonstrate other developed features.

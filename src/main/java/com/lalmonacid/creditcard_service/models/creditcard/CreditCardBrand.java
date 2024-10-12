@@ -19,11 +19,11 @@ public abstract class CreditCardBrand {
     }
 
     public static CreditCardBrand fromNumber(CreditCardNumber creditCardNumber) throws Exception {
-        if (creditCardNumber.isAmex()) {
+        if (AmexCreditCardBrand.isNumberForBrand(creditCardNumber)) {
             return CreditCardBrand.from(AMEX);
-        } else if (creditCardNumber.isNara()) {
+        } else if (NaranjaCreditCardBrand.isNumberForBrand(creditCardNumber)) {
             return CreditCardBrand.from(NARA);
-        } else if (creditCardNumber.isVisa()) {
+        } else if (VisaCreditCardBrand.isNumberForBrand(creditCardNumber)) {
             return CreditCardBrand.from(VISA);
         } else {
             throw new Exception("Invalid credit card number");
@@ -36,4 +36,6 @@ public abstract class CreditCardBrand {
     public boolean equals(CreditCardBrand brand) {
         return this.name().equals(brand.name());
     }
+
+    //public abstract static boolean isNumberForBrand(CreditCardNumber number);
 }

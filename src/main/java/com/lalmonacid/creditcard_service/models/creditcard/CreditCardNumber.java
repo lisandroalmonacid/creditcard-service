@@ -18,18 +18,6 @@ public class CreditCardNumber {
         return number;
     }
 
-    public Boolean isAmex() {
-        return number.startsWith("3");
-    }
-
-    public Boolean isVisa() {
-        return number.startsWith("4");
-    }
-
-    public Boolean isNara() {
-        return number.startsWith("5");
-    }
-
     public CreditCardBrand getBrand() throws Exception {
         return CreditCardBrand.fromNumber(this);
     }

@@ -26,7 +26,7 @@ public class CreditCardFactory {
         return withBrandAndNumber(number.getBrand(), number);
     }
 
-    public static CreditCard withBrandAndNumber(CreditCardBrand brand, CreditCardNumber number) throws Exception {
+    public static CreditCard withBrandAndNumber(CreditCardBrand brand, CreditCardNumber number) {
         return new CreditCard(
                 brand,
                 number,

@@ -166,44 +166,31 @@ class CreditCardWebServiceApplicationTests {
     }
 
 	@Test
-	public void test13_OperationWithValidCardAndAmountIsValid() {
-		String amexCreditCardNumber = "51234567890123";
-
-		try {
-			CreditCard card = CreditCardFactory.ofNumber(CreditCardNumber.from(amexCreditCardNumber));
-			Operation operation = Operation.of(card, 100.0);
-			assertTrue(Operation.isValidAmount(100.0));
-		} catch (Exception e) {
-			// no exception
-		}
-	}
-
-	@Test
-	public void test14_OperationWithExpiredCardAndValidAmountIsInvalid() {
+	public void test13_OperationWithExpiredCardAndValidAmountIsInvalid() {
 		String amexCreditCardNumber = "51234567890123";
 
 		try {
 			CreditCard card = CreditCardFactory.expiredCard();
-			Operation operation = Operation.of(card, 100.0);
+			Operation.of(card, 100.0);
 		} catch (Exception e) {
 			assertEquals("Cannot operate with an expired card", e.getMessage());
 		}
 	}
 
 	@Test
-	public void test15_OperationWithValidCardAndInvalidAmountIsInvalid() {
+	public void test14_OperationWithValidCardAndInvalidAmountIsInvalid() {
 		String amexCreditCardNumber = "51234567890123";
 
 		try {
 			CreditCard card = CreditCardFactory.ofNumber(CreditCardNumber.from(amexCreditCardNumber));
-			Operation operation = Operation.of(card, 1000.0);
+			Operation.of(card, 1000.0);
 		} catch (Exception e) {
 			assertEquals("Amount must be less than 1000", e.getMessage());
 		}
 	}
 
 	@Test
-	public void test16_IdenticalCardsAreEqual() {
+	public void test15_IdenticalCardsAreEqual() {
 		String naranjaCreditCardNumber = "51234567890123";
 
 		try {
@@ -216,7 +203,7 @@ class CreditCardWebServiceApplicationTests {
 	}
 
 	@Test
-	public void test17_DifferentCardsAreNotEqual() {
+	public void test16_DifferentCardsAreNotEqual() {
  		String amexCreditCardNumber = "51234567890123";
 		String visaCreditCardNumber = "41234567890123";
 

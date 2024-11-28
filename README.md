@@ -1,7 +1,6 @@
 # Credit Card Web Service
 
 This is a simple credit card web service developed in Spring Boot.
-[Link to Swagger UI](http://18.191.149.160/swagger-ui/index.html)
 
 It calculates an Operation Rate depending on the specified Credit Card Brand:
 
